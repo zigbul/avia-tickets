@@ -1,0 +1,66 @@
+.sidebar {
+   border: 1px solid tomato;
+   width: 250px;
+   padding: 10px;
+   font-size: 12px;
+   user-select: none;
+   color: rgb(73, 67, 59);
+
+   &__section {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 20px;
+   }
+
+   &__title {
+      margin-bottom: 15px;
+   }
+
+   &__radio-label {
+      display: flex;
+      cursor: pointer;
+      position: relative;
+      padding-left: 15px;
+      margin-bottom: 5px;
+   }
+
+   &__radio {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      margin: -1px;
+      border: 0;
+      padding: 0;
+      clip: rect(0 0 0 0);
+      overflow: hidden
+   }
+
+   &__custom-radio {
+      border: 2px solid lightgray;
+      border-radius: 50%;
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      margin-left: -15px;
+   }
+
+   &__radio:checked + .sidebar__custom-radio {
+      border: 2px solid lightskyblue;
+      background: url('../../assets/oval.svg') no-repeat;
+      background-size: 6px;
+      background-position-x: center;
+      background-position-y: center;
+
+   } 
+}
+
+input[type=number] {
+   margin-bottom: 10px;
+}
+
+
+.truncate {
+   text-overflow: ellipsis;
+   overflow: hidden;
+   white-space: nowrap;
+}

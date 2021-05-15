@@ -1,0 +1,124 @@
+.container {
+   display: flex;
+   flex-direction: column;
+   padding-bottom: 20px;
+   flex: 1 1 auto;
+}
+
+.text {
+   text-align: center;
+   margin-top: 20vh;
+}
+
+.ticket {
+   display: flex;
+   flex-direction: column;
+   margin-bottom: 20px;
+   
+   &__header {
+      background: lightskyblue;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px;
+      color: white;
+   }
+
+   &__price-block {
+      text-align: end;
+      font-size: 13px;
+
+      & p:first-child {
+         font-size: 24px;
+      }
+   }
+
+   &__body {
+      padding: 0 20px;
+   }
+
+   &__destination {
+      display: flex;
+      align-items: center;
+      padding: 5px 0;
+      border-bottom: 2px solid lightgrey;
+   }
+
+   &__uid {
+      color: lightskyblue;
+   }
+
+   &__arrow {
+      margin: 0 50px;
+   }
+
+   &__data {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+      font-size: 22px;
+   }
+
+   &__time-in-flight {
+      background: url('../../assets/clock.svg') no-repeat;
+      background-position-x: left;
+      background-position-y: 50%;
+      background-size: 15px;
+      padding-left: 20px;
+   }
+
+   &__date {
+      color: lightskyblue;
+   }
+
+   &__stops {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 10px 0;
+      color: lightsalmon;
+      font-size: 18px;
+
+      &::after, &::before {
+         content: '';
+         display: block;
+         width: 35%;
+         height: 2px;
+         margin-left: 10px;
+         background: lightgray;
+      }
+
+      &::before {
+         margin-left: 0;
+         margin-right: 10px;
+      }
+   }
+
+   &__executor {
+      padding-bottom: 10px;
+      font-size: 18px;
+   }
+
+   &__btn {
+      padding: 10px;
+      font-size: 18px;
+      color: white;
+      background: lightsalmon;
+      border: none;
+      outline: none;
+   }
+}
+
+.ticket__body section:first-child::after {
+   display: block;
+   content: '';
+   height: 3px;
+   background-color: lightskyblue;
+   margin: 0 -20px;
+}
+
+.more-btn {
+   align-self: center;
+   padding: 5px 40px;
+}
