@@ -1,7 +1,8 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setSorted, setFilterByStops, setFilterByPrice, setFilterByCompany } from '../../store/sortReducer';
 import styles from './sidebar.module.scss';
+import { useDebouncedCallback } from 'use-debounce';
 
 const Sidebar = () => {
    const sort = useSelector(state => state.sort.sorted);
@@ -9,7 +10,14 @@ const Sidebar = () => {
    const filterByPrice = useSelector(state => state.sort.filterByPrice);
    const filterByCompany = useSelector(state => state.sort.filterByCompany);
 
+   const [maxValue, setMaxValue] = useState(filterByPrice.maxValue);
+   const [minValue, setMinValue] = useState(filterByPrice.minValue); 
+
    const dispatch = useDispatch();
+
+   const debounceOnChange = useDebouncedCallback((e) => {
+      dispatch(setFilterByPrice({...filterByPrice, [e.target.name]: e.target.value}))
+   }, 2000)  
 
    useEffect(() => {
       if((!filter.oneStop && !filter.noStops) && !filter.all) {
@@ -79,17 +87,25 @@ const Sidebar = () => {
             <h2 className={styles.sidebar__title}>Цена</h2>
             <label>
                От <input type="number"
-                     value={filterByPrice.minValue}
+                     value={minValue}
                      name="minValue"
-                     onChange={(e) => dispatch(setFilterByPrice({...filterByPrice, [e.target.name]: e.target.value}))}
+                     onChange={(e) => {
+                           setMinValue(e.target.value);
+                           debounceOnChange(e);
+                        }
+                     }
                   />
             </label>
             <label>
                До <input 
                      type="number"
-                     value={filterByPrice.maxValue}
+                     value={maxValue}
                      name="maxValue"
-                     onChange={(e) => dispatch(setFilterByPrice({...filterByPrice, [e.target.name]: e.target.value}))}
+                     onChange={(e) => {
+                           setMaxValue(e.target.value);
+                           debounceOnChange(e);
+                        }
+                     }
                   />
             </label>
          </section>
