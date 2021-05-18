@@ -110,7 +110,7 @@ const TicketList = () => {
                   </section>
                   <button className={styles.ticket__btn}>Выбрать</button>
                </article>
-            )).slice(0,5)}
+            ))}
          </main>
          <button 
             className={styles['more-btn']}
